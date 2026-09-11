@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | KrishiNetra</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f5fb;
+        }
+
+        header {
+            background: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #54258a;
+        }
+
+        .logo span {
+            color: #6f3fa5;
+        }
+
+        .logout {
+            background: #6f3fa5;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .dashboard {
+            padding: 60px 8%;
+        }
+
+        .welcome {
+            margin-bottom: 35px;
+        }
+
+        .welcome h1 {
+            color: #54258a;
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            color: #666;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            color: #54258a;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #6f3fa5;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        @media(max-width: 768px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 15px 5%;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🧅 Krishi<span>Netra</span>
+    </div>
+
+    <a href="/logout" class="logout">
+        Logout
+    </a>
+
+</header>
+
+
+<div class="dashboard">
+
+    <div class="welcome">
+
+        <h1>
+            Welcome, {{ username }} 👋
+        </h1>
+
+        <p>
+            You are logged in as
+            <b>{{ role|capitalize }}</b>
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">🧅</div>
+
+            <h2>Assess Onion</h2>
+
+            <p>
+                Upload an onion image and get its quality assessment.
+            </p>
+
+            <a href="/#assessment" class="btn">
+                Start Assessment
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📊</div>
+
+            <h2>Analysis History</h2>
+
+            <p>
+                View previous onion analysis results.
+            </p>
+
+            <a href="/#history" class="btn">
+                View History
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🌿</div>
+
+            <h2>Smart Utilization</h2>
+
+            <p>
+                Get suitable utilization recommendations.
+            </p>
+
+            <a href="/#assessment" class="btn">
+                Explore
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
