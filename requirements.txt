@@ -7,3 +7,4 @@ Werkzeug
 ultralytics
 opencv-python
 reportlab
+gunicorn
