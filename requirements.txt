@@ -5,6 +5,6 @@ scikit-learn
 Pillow
 Werkzeug
 ultralytics
-opencv-python
+opencv-python-headless
 reportlab
 gunicorn
