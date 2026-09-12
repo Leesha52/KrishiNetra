@@ -1,1 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KrishiNetra | Smart Onion Grading</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        🌱 <span>Krishi<span>Netra</span></span>
+    </div>
+
+    <nav class="nav-links">
+
+        <a href="#home" class="active" data-i18n="home">
+            Home
+        </a>
+
+        <a href="#about" data-i18n="about">
+            About
+        </a>
+
+        <a href="#features" data-i18n="features">
+            Features
+        </a>
+
+    </nav>
+
+    <div class="nav-actions">
+
+        <select id="languageSelect"
+                class="language-select"
+                onchange="changeLanguage(this.value)">
+
+            <option value="en">🌐 English</option>
+            <option value="hi">🌐 हिंदी</option>
+            <option value="mr">🌐 मराठी</option>
+            <option value="gu">🌐 ગુજરાતી</option>
+            <option value="pa">🌐 ਪੰਜਾਬੀ</option>
+            <option value="bn">🌐 বাংলা</option>
+
+        </select>
+
+        <a href="{{ url_for('login') }}"
+           class="btn btn-outline"
+           data-i18n="login">
+            Login
+        </a>
+
+        <a href="{{ url_for('signup') }}"
+           class="btn btn-primary"
+           data-i18n="signup">
+            Sign Up
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            🌿 <span>AI-Powered Agriculture</span>
+        </div>
+
+        <h1>
+            Smart <span>Onion Grading</span><br>
+            for a Better Tomorrow
+        </h1>
+
+        <p data-i18n="heroDescription">
+            KrishiNetra uses AI technology to detect onion quality,
+            classify grades and help farmers get better value
+            for their produce.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="{{ url_for('login') }}"
+               class="btn btn-primary"
+               data-i18n="getStarted">
+                Get Started →
+            </a>
+
+            <a href="#about"
+               class="btn btn-outline"
+               data-i18n="learnMore">
+                Learn More
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ONION HERO IMAGE ================= -->
+
+    <div class="hero-visual">
+
+        <div class="onion-glow"></div>
+
+        <img src="https://img.freepik.com/premium-vector/red-onion-isolated-white-background-cutout_1021328-6771.jpg?w=2000"
+     alt="KrishiNetra AI Onion Grading"
+     class="hero-onion-image">
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="section about-section" id="about">
+
+    <div class="section-heading">
+
+        <div class="section-leaf">
+            ─ 🌿 ─
+        </div>
+
+        <h2 data-i18n="aboutTitle">
+            Why KrishiNetra?
+        </h2>
+
+        <p data-i18n="aboutDescription">
+            Advanced AI technology for smarter onion grading
+            and better agricultural decisions.
+        </p>
+
+    </div>
+
+
+    <div class="benefit-grid">
+
+        <div class="benefit-card">
+
+            <div class="benefit-icon">
+                🧠
+            </div>
+
+            <h3 data-i18n="smartAssessment">
+                AI-Powered Analysis
+            </h3>
+
+            <p data-i18n="smartAssessmentDescription">
+                Uses AI to analyze visible onion quality
+                characteristics.
+            </p>
+
+        </div>
+
+
+        <div class="benefit-card">
+
+            <div class="benefit-icon">
+                ✓
+            </div>
+
+            <h3 data-i18n="dataDriven">
+                Accurate Grading
+            </h3>
+
+            <p data-i18n="dataDrivenDescription">
+                Helps identify onion classes consistently
+                and efficiently.
+            </p>
+
+        </div>
+
+
+        <div class="benefit-card">
+
+            <div class="benefit-icon">
+                🌱
+            </div>
+
+            <h3 data-i18n="betterUtilization">
+                Better Decisions
+            </h3>
+
+            <p data-i18n="betterUtilizationDescription">
+                Supports better selling, processing and
+                utilization decisions.
+            </p>
+
+        </div>
+
+
+        <div class="benefit-card">
+
+            <div class="benefit-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Real-Time Results
+            </h3>
+
+            <p>
+                Get quick AI-based assessment results
+                from an onion image.
+            </p>
+
+        </div>
+
+
+        <div class="benefit-card">
+
+            <div class="benefit-icon">
+                👨‍🌾
+            </div>
+
+            <h3>
+                Supports Farmers
+            </h3>
+
+            <p>
+                Designed to make quality assessment
+                simple and accessible.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="section features-section" id="features">
+
+    <div class="section-heading">
+
+        <div class="section-leaf">
+            ─ 🌿 ─
+        </div>
+
+        <h2 data-i18n="featuresTitle">
+            Powerful Features
+        </h2>
+
+        <p>
+            Everything needed for smarter onion quality
+            assessment.
+        </p>
+
+    </div>
+
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🤖
+            </div>
+
+            <h3 data-i18n="aiGrading">
+                AI Grading
+            </h3>
+
+            <p data-i18n="aiGradingDescription">
+                AI-based visual analysis for onion grading.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔍
+            </div>
+
+            <h3 data-i18n="qualityAssessment">
+                Quality Assessment
+            </h3>
+
+            <p data-i18n="qualityAssessmentDescription">
+                Detects visible quality characteristics
+                and defects.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📊
+            </div>
+
+            <h3 data-i18n="digitalHistory">
+                Digital History
+            </h3>
+
+            <p data-i18n="digitalHistoryDescription">
+                Keep records of previous onion assessments.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🌿
+            </div>
+
+            <h3 data-i18n="smartUtilization">
+                Smart Utilization
+            </h3>
+
+            <p data-i18n="utilizationDescription">
+                Suggests suitable next-use pathways based
+                on assessment.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="section how-section">
+
+    <div class="section-heading">
+
+        <div class="section-leaf">
+            ─ 🌿 ─
+        </div>
+
+        <h2 data-i18n="howItWorks">
+            How It Works
+        </h2>
+
+        <p data-i18n="simpleProcess">
+            A simple three-step process.
+        </p>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step-card">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <h3 data-i18n="stepLogin">
+                Login
+            </h3>
+
+            <p data-i18n="stepLoginDescription">
+                Create an account or login to KrishiNetra.
+            </p>
+
+        </div>
+
+
+        <div class="step-card">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <h3 data-i18n="stepAssess">
+                Assess
+            </h3>
+
+            <p data-i18n="stepAssessDescription">
+                Upload or capture an onion image.
+            </p>
+
+        </div>
+
+
+        <div class="step-card">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <h3 data-i18n="stepResult">
+                Result
+            </h3>
+
+            <p data-i18n="stepResultDescription">
+                Get AI-based grading and recommendation.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta-section">
+
+    <div class="cta-content">
+
+        <h2 data-i18n="ctaTitle">
+            Make Every Onion Count
+        </h2>
+
+        <p data-i18n="ctaDescription">
+            Use AI-powered grading to make faster,
+            smarter and more informed decisions.
+        </p>
+
+        <a href="{{ url_for('login') }}"
+           class="btn btn-primary"
+           data-i18n="getStarted">
+            Get Started →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-logo">
+        🌱 KrishiNetra
+    </div>
+
+    <p data-i18n="footerTagline">
+        Smarter Grading • Better Utilization • Better Agriculture
+    </p>
+
+    <p>
+        © 2026 KrishiNetra. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
