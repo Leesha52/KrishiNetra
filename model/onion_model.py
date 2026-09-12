@@ -13,11 +13,7 @@ BASE_DIR = os.path.dirname(
 
 MODEL_PATH = os.path.join(
     BASE_DIR,
-    "runs",
-    "detect",
     "model",
-    "onion_grading-5",
-    "weights",
     "best.pt"
 )
 
