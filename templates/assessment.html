@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assess Onion | KrishiNetra</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="auth-page">
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        🌱 <span>Krishi<span>Netra</span></span>
+    </div>
+
+    <nav class="nav-links">
+
+        <a href="{{ url_for('farmer_dashboard') }}"
+           data-i18n="dashboard">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('assessment') }}"
+           class="active"
+           data-i18n="assess">
+            Assess
+        </a>
+
+        <a href="{{ url_for('history') }}"
+           data-i18n="history">
+            History
+        </a>
+
+    </nav>
+
+    <div class="nav-actions">
+
+        <select id="languageSelect"
+                class="language-select"
+                onchange="changeLanguage(this.value)">
+
+            <option value="en">🌐 English</option>
+            <option value="hi">🌐 हिंदी</option>
+            <option value="mr">🌐 मराठी</option>
+            <option value="gu">🌐 ગુજરાતી</option>
+            <option value="pa">🌐 ਪੰਜਾਬੀ</option>
+            <option value="bn">🌐 বাংলা</option>
+
+        </select>
+
+        <a href="{{ url_for('farmer_dashboard') }}"
+           class="btn btn-outline"
+           data-i18n="dashboard">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('logout') }}"
+           class="btn btn-primary"
+           data-i18n="logout">
+            Logout
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= ASSESSMENT ================= -->
+
+<main class="assessment-container">
+
+    <div class="section-heading">
+
+        <div class="section-leaf">
+            ─ 🌿 ─
+        </div>
+
+        <h2 data-i18n="assessTitle">
+            Assess Your Onion
+        </h2>
+
+        <p data-i18n="assessmentDescription">
+            Upload a clear onion image and let KrishiNetra
+            analyze its visible quality characteristics.
+        </p>
+
+    </div>
+
+
+    <!-- ================= UPLOAD BOX ================= -->
+
+    <div class="upload-box">
+
+        <div class="benefit-icon">
+            🧅
+        </div>
+
+        <h3 data-i18n="uploadOnion">
+            Upload Onion Image
+        </h3>
+
+        <p data-i18n="uploadDescription">
+            Select a clear JPG, JPEG, PNG or WEBP image.
+        </p>
+
+
+        <input
+            type="file"
+            id="onionImage"
+            name="image"
+            accept="image/jpeg,image/png,image/webp">
+
+
+        <!-- IMAGE PREVIEW -->
+
+        <img
+            id="previewImage"
+            class="preview-image"
+            alt="Onion Preview">
+
+
+        <!-- FILE NAME -->
+
+        <p id="fileName"
+           style="margin-top:10px; color:#71847e;">
+        </p>
+
+
+        <!-- ANALYZE BUTTON -->
+
+        <button
+            type="button"
+            class="btn btn-primary analyze-btn"
+            onclick="analyzeOnion()"
+            data-i18n="analyzeOnion">
+
+            🔍 Analyze Onion
+
+        </button>
+
+
+        <!-- MESSAGE -->
+
+        <p id="analysisMessage"
+           style="margin-top:15px; color:#159447;">
+        </p>
+
+    </div>
+
+
+    <!-- ================= INFO ================= -->
+
+    <div class="section"
+         style="padding:55px 0 20px;">
+
+        <div class="section-heading">
+
+            <h2 data-i18n="assessmentChecks">
+                What KrishiNetra Checks
+            </h2>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📏
+                </div>
+
+                <h3 data-i18n="size">
+                    Size
+                </h3>
+
+                <p data-i18n="sizeDescription">
+                    Visible size characteristics of the onion.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🎨
+                </div>
+
+                <h3 data-i18n="appearance">
+                    Appearance
+                </h3>
+
+                <p data-i18n="appearanceDescription">
+                    Colour and overall visible appearance.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🔎
+                </div>
+
+                <h3 data-i18n="defects">
+                    Visible Defects
+                </h3>
+
+                <p data-i18n="defectsDescription">
+                    Visible quality characteristics detected by AI.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🤖
+                </div>
+
+                <h3 data-i18n="aiDecision">
+                    AI Classification
+                </h3>
+
+                <p data-i18n="aiDecisionDescription">
+                    AI predicts the most suitable onion class.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+<script>
+
+const onionInput = document.getElementById("onionImage");
+const previewImage = document.getElementById("previewImage");
+const fileName = document.getElementById("fileName");
+
+onionInput.addEventListener("change", function () {
+
+    const file = this.files[0];
+
+    if (!file) {
+        previewImage.style.display = "none";
+        fileName.textContent = "";
+        return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+        alert("Please select a valid image.");
+        this.value = "";
+        return;
+    }
+
+    fileName.textContent = file.name;
+
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+
+        previewImage.src = event.target.result;
+        previewImage.style.display = "block";
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+</script>
+
+</body>
+</html>
+
+
+

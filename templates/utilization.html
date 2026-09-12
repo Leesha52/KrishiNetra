@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Utilization | KrishiNetra</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🧅 <span>KrishiNetra</span>
+    </div>
+
+    <nav class="nav-links">
+        <a href="{{ url_for('farmer_dashboard') }}"
+           data-i18n="dashboard">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('assessment') }}"
+           data-i18n="assess">
+            Assess
+        </a>
+
+        <a href="{{ url_for('history') }}"
+           data-i18n="history">
+            History
+        </a>
+    </nav>
+
+    <div class="nav-actions">
+
+        <select id="languageSelect"
+                onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="mr">मराठी</option>
+            <option value="gu">ગુજરાતી</option>
+            <option value="pa">ਪੰਜਾਬੀ</option>
+            <option value="bn">বাংলা</option>
+        </select>
+
+        <a href="{{ url_for('profile') }}"
+           class="btn btn-outline"
+           data-i18n="profile">
+            Profile
+        </a>
+
+        <a href="{{ url_for('logout') }}"
+           class="btn btn-primary"
+           data-i18n="logout">
+            Logout
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="utilization-container">
+
+    <div class="section-heading">
+
+        <h1 data-i18n="smartUtilization">
+            Smart Utilization 🌿
+        </h1>
+
+        <p>
+            Give every onion the most suitable next destination.
+        </p>
+
+    </div>
+
+
+    <!-- INTRO -->
+
+    <section class="utilization-intro">
+
+        <h2>
+            From Quality Assessment to Better Utilization
+        </h2>
+
+        <p>
+            KrishiNetra uses the assessed quality category to suggest
+            a suitable destination for the onion.
+        </p>
+
+    </section>
+
+
+    <!-- UTILIZATION CARDS -->
+
+    <section class="utilization-grid">
+
+        <div class="utilization-card">
+
+            <div class="utilization-icon">
+                ⭐
+            </div>
+
+            <h3>
+                Extra Class
+            </h3>
+
+            <p>
+                Premium fresh market
+            </p>
+
+            <span class="utilization-tag">
+                High Market Value
+            </span>
+
+        </div>
+
+
+        <div class="utilization-card">
+
+            <div class="utilization-icon">
+                🧅
+            </div>
+
+            <h3>
+                Class 1
+            </h3>
+
+            <p>
+                Fresh market
+            </p>
+
+            <span class="utilization-tag">
+                Good Market Value
+            </span>
+
+        </div>
+
+
+        <div class="utilization-card">
+
+            <div class="utilization-icon">
+                🏭
+            </div>
+
+            <h3>
+                Class 2
+            </h3>
+
+            <p>
+                Processing or value recovery
+            </p>
+
+            <span class="utilization-tag">
+                Alternative Value
+            </span>
+
+        </div>
+
+
+        <div class="utilization-card">
+
+            <div class="utilization-icon">
+                ♻️
+            </div>
+
+            <h3>
+                Reject
+            </h3>
+
+            <p>
+                Further inspection or suitable waste management
+            </p>
+
+            <span class="utilization-tag">
+                Safe Management
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- SMART FLOW -->
+
+    <section class="utilization-flow">
+
+        <h2>
+            Smart Decision Flow
+        </h2>
+
+        <div class="flow-items">
+
+            <div class="flow-item">
+                <strong>1</strong>
+                <span>Assess</span>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-item">
+                <strong>2</strong>
+                <span>Classify</span>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-item">
+                <strong>3</strong>
+                <span>Evaluate</span>
+            </div>
+
+            <div class="flow-arrow">→</div>
+
+            <div class="flow-item">
+                <strong>4</strong>
+                <span>Recommend</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- IMPORTANT NOTE -->
+
+    <section class="utilization-note">
+
+        <h3>
+            Important
+        </h3>
+
+        <p>
+            A lower quality category does not automatically mean waste.
+            Final utilization should depend on actual condition,
+            defect severity and appropriate inspection.
+        </p>
+
+    </section>
+
+
+    <div class="utilization-actions">
+
+        <a href="{{ url_for('assessment') }}"
+           class="btn btn-primary">
+            🧅 Assess Onion
+        </a>
+
+        <a href="{{ url_for('history') }}"
+           class="btn btn-outline">
+            View History
+        </a>
+
+    </div>
+
+</main>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

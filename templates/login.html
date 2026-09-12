@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | KrishiNetra</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="auth-page">
+
+<header class="navbar">
+    <div class="logo">
+        🌱 KrishiNetra
+    </div>
+
+    <div class="nav-actions">
+        <select id="languageSelect" class="language-select"
+                onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="mr">मराठी</option>
+            <option value="gu">ગુજરાતી</option>
+            <option value="pa">ਪੰਜਾਬੀ</option>
+            <option value="bn">বাংলা</option>
+        </select>
+
+        <a href="{{ url_for('home') }}" class="btn btn-outline"
+           data-i18n="home">
+            Home
+        </a>
+    </div>
+</header>
+
+
+<main class="auth-container">
+
+    <div class="auth-card">
+
+        <div class="auth-icon">
+            🌾
+        </div>
+
+        <h1 data-i18n="loginTitle">
+            Welcome Back
+        </h1>
+
+        <p class="auth-subtitle" data-i18n="loginDescription">
+            Login to continue using KrishiNetra.
+        </p>
+
+
+        {% if error %}
+        <div class="error-message">
+            {{ error }}
+        </div>
+        {% endif %}
+
+
+        <!-- Role Selection -->
+
+        <div class="role-selection">
+
+            <button type="button"
+                    class="role-btn active"
+                    id="farmerRole"
+                    onclick="selectRole('farmer')">
+
+                👨‍🌾
+                <span data-i18n="farmer">
+                    Farmer
+                </span>
+
+            </button>
+
+
+            <button type="button"
+                    class="role-btn"
+                    id="adminRole"
+                    onclick="selectRole('admin')">
+
+                🛡️
+                <span data-i18n="admin">
+                    Admin
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- Login Form -->
+
+        <form method="POST"
+              action="{{ url_for('login') }}"
+              class="auth-form">
+
+            <input type="hidden"
+                   name="role"
+                   id="roleInput"
+                   value="farmer">
+
+
+            <div class="form-group">
+
+                <label for="username"
+                       data-i18n="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter username"
+                    data-i18n-placeholder="usernamePlaceholder"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password"
+                       data-i18n="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter password"
+                    data-i18n-placeholder="passwordPlaceholder"
+                    required>
+
+            </div>
+
+
+            <button type="submit"
+                    class="btn btn-primary auth-submit"
+                    data-i18n="login">
+                Login
+            </button>
+
+        </form>
+
+
+        <p class="auth-link">
+
+            <span data-i18n="dontHaveAccount">
+                Don't have an account?
+            </span>
+
+            <a href="{{ url_for('signup') }}"
+               data-i18n="signup">
+                Sign Up
+            </a>
+
+        </p>
+
+
+        <a href="{{ url_for('home') }}"
+           class="back-link"
+           data-i18n="backHome">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</main>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+<script>
+
+function selectRole(role) {
+
+    const roleInput = document.getElementById("roleInput");
+
+    const farmerRole = document.getElementById("farmerRole");
+
+    const adminRole = document.getElementById("adminRole");
+
+
+    roleInput.value = role;
+
+
+    farmerRole.classList.remove("active");
+    adminRole.classList.remove("active");
+
+
+    if (role === "farmer") {
+        farmerRole.classList.add("active");
+    } else {
+        adminRole.classList.add("active");
+    }
+}
+
+</script>
+
+</body>
+</html>
